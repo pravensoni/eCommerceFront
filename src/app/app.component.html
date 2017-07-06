@@ -1,0 +1,19 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{title}}!!
+  </h1>
+ <ul class="products">
+  <li *ngFor="let product of products" (click)="onSelect(product)">
+    id : {{product.id}}<br>
+title : {{product.title}}<br>
+price : {{product.price}}<br>
+origPrice : {{product.origPrice}}<br>
+description : {{product.description}}<br>
+imageLink : {{product.imageLink}}<br><br>
+
+  </li>
+</ul> 
+</div>
+
+<product-detail [product]="selectedProduct"></product-detail>
