@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
-import {Product} from './models/product';
-import {ProductService} from './product.service';
+import {Product} from '../models/product';
+import {ProductService} from '../services/product.service';
 
 
 
@@ -9,7 +9,7 @@ import {ProductService} from './product.service';
 @Component({
   selector: 'homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['../app.component.css'],
   providers: [ProductService],
 })
 export class HomepageComponent implements OnInit{

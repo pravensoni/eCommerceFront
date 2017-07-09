@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { homePageProducts } from './models/mock-products';
-import { Product } from './models/product';
+import { homePageProducts } from '../models/mock-products';
+import { Product } from '../models/product';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
