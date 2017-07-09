@@ -1,19 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{title}}!!
+    Home Page
   </h1>
  <ul class="products">
-  <li *ngFor="let product of products" (click)="onSelect(product)">
+  <a *ngFor="let product of products" [routerLink]="['/product', product.id]" >
     id : {{product.id}}<br>
 title : {{product.title}}<br>
 price : {{product.price}}<br>
 origPrice : {{product.origPrice}}<br>
-description : {{product.description}}<br>
-imageLink : {{product.imageLink}}<br><br>
+imageLink : {{product.imageLinks[0]}}<br><br>
 
-  </li>
+  </a>
 </ul> 
 </div>
-
-<product-detail [product]="selectedProduct"></product-detail>

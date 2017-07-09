@@ -1,0 +1,18 @@
+<div *ngIf="product">
+  <h2>{{product.id}} details!</h2>
+  <div><label>id: </label>{{product.id}}</div>
+  <div>  <label>name: </label>  {{product.title}} </div>
+  <div>
+    <label>price: </label>
+    {{product.price}}
+  </div>
+  <div>
+  <label>Original Price: </label>
+    {{product.origPrice}}
+  </div>
+  <div>
+  <label>Description: </label>
+    {{product.description}}
+  </div>
+</div>
+<button (click)="goBack()">Back</button>
