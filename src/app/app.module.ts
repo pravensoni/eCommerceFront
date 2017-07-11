@@ -8,6 +8,7 @@ import {AboutUsComponent} from './about-us/about-us.component';
 import { AppRoutingModule }   from './app-routing.module';
 import { HttpModule }    from '@angular/http';
 import { CookieModule } from 'ngx-cookie';
+import { CarouselModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CookieModule } from 'ngx-cookie';
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    CookieModule.forRoot()
+    CookieModule.forRoot(),
+    CarouselModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

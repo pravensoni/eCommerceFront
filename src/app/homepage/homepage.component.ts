@@ -6,10 +6,11 @@ import {ProductService} from '../services/product.service';
 
 
 
+
 @Component({
   selector: 'homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['../app.component.css'],
+  styleUrls: ['./homepage.component.css'],
   providers: [ProductService],
 })
 export class HomepageComponent implements OnInit{

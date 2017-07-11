@@ -3,15 +3,16 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template:`
-  <h1>{{title}}</h1>
-  <a routerLink="/home">Home</a>
-  <a routerLink="/about-us">About Us</a>
-  <a routerLink="/contact-us">Contact Us</a>
-   <router-outlet></router-outlet>`
+  templateUrl: './app.component.html',
+  styleUrls:['./app.component.css']
 })
 export class AppComponent{
   title = 'praveen\'s app';
+  isIn = false;   // store state
+    toggleState() { // click handler
+        let bool = this.isIn;
+        this.isIn = bool === false ? true : false; 
+    }
 }
 
 
