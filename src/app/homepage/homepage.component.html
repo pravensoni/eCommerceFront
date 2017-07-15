@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center" style="padding-bottom: 50px">
-            <img src="assets/images/Fidget_Cube_Logo-2_450x.png" alt="Fidget Cube India">
+                <img src="assets/images/Fidget_Cube_Logo-2_450x.png" alt="Fidget Cube India">
             </div>
         </div>
 
@@ -68,29 +68,30 @@
                 </div>
 
                 <div class="row">
-                    <div *ngFor="let product of products" [routerLink]="['/product', product.id]">
-                        <div class="col-sm-4 col-lg-4 col-md-4">
-                            <div class="thumbnail">
-                                <img src="{{product.imageLinks[0]}}" alt="">
-                                <div class="caption">
+                    <div *ngFor="let product of products" [routerLink]="['/product', product.id]" class="col-xs-6 col-sm-4 col-lg-4 col-md-4">
 
-                                    <h4><a href="#"><span style="text-transform: capitalize;">{{product.title}}</span></a>
-                                        <h4>&#x20b9; {{product.price}} <span class="origPrice"><del>{{product.origPrice}}</del></span></h4>
-                                    </h4>
+                        <div class="thumbnail">
+                            <img src="{{product.imageLinks[0]}}" alt="">
+                            <div class="caption">
 
-                                </div>
-                                <div class="ratings">
-                                    <p class="pull-right">15 reviews</p>
-                                    <p>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                    </p>
-                                </div>
+                                <p class="title"><a [routerLink]="['/product', product.id]"><span style="text-transform: capitalize;">{{product.title}}</span></a>
+                                    
+                                </p>
+                                <h4>&#x20b9; {{product.price}} <span class="origPrice"><del>{{product.origPrice}}</del></span></h4>
+
                             </div>
+                            <!--<div class="ratings">
+                                <p class="pull-right">15 reviews</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </p>
+                            </div>-->
                         </div>
+
                     </div>
 
                 </div>

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { homePageProducts } from '../models/mock-products';
 import { ProductCart } from '../models/product-cart';
 import { Headers, Http } from '@angular/http';
 import { CookieService } from 'ngx-cookie';
@@ -28,8 +27,9 @@ export class CartService {
         let productCart : ProductCart = products.find(product => product.id===item.id && product.variantId === item.variantId);
         let index : number = products.findIndex(product => product.id===item.id && product.variantId === item.variantId);
         if(typeof productCart != 'undefined'){
-            this._cookieService.removeAll();
-            productCart.qty++;
+            this._cookieService.removeAll();     
+            item.qty+=productCart.qty;
+            productCart.qty = item.qty;
             products[index] = productCart;
         }else {
         products.push(item);
@@ -37,8 +37,9 @@ export class CartService {
         this.setCookie(products);
     }
 
-    getAllItems() {
-        console.log(this._cookieService.getAll());
+    getAllItems() : ProductCart[] {
+       let products : ProductCart[] = this.getCookie('cart');
+       return products;
         //this._cookieService.removeAll();
     }
 

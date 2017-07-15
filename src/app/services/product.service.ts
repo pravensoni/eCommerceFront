@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { homePageProducts } from '../models/mock-products';
 import { Product } from '../models/product';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
@@ -9,7 +8,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class ProductService {
 
-    private productUrl = 'http://localhost:8080/product/';
+    private productUrl = 'http://192.168.0.108:8080/product/';
 
     constructor(private http: Http) { }
 

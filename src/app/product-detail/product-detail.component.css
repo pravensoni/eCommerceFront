@@ -1,0 +1,38 @@
+.price {
+    color: #e42c00;
+    font-size: 22.4px;
+    font-weight: 400;
+}
+
+.origPrice{
+    color: grey;
+    font-size: 22.4px;
+    font-weight: 400;
+}
+
+h4{
+    font-weight: bold !important;
+}
+
+.variant-dropdown{
+    background-color: #fff;
+    padding-right: 28px;
+    text-indent: 0.01px;
+        border-radius: 2px;
+            padding: 8px 10px;
+    line-height: 1.42;
+
+    border: 1px solid #aaa;
+    max-width: 100%;
+    display: block;
+    margin: 0 0 1em;
+    color: #333;
+}
+.add-to-cart{
+    border-radius: 2px;
+    background-color: #e42c00;
+    color: #fff;
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 20px 0px 20px 0px;
+}
