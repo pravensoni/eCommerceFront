@@ -36,6 +36,13 @@ export class CartService {
         }
         this.setCookie(products);
     }
+    removeItem(item: ProductCart) {
+        let products : ProductCart[] = this.getCookie('cart');
+        //let productCart : ProductCart = products.find(product => product.id===item.id && product.variantId === item.variantId);
+        let index : number = products.findIndex(product => product.id===item.id && product.variantId === item.variantId);
+        products.splice(index,1);
+        this.setCookie(products);
+    }
 
     getAllItems() : ProductCart[] {
        let products : ProductCart[] = this.getCookie('cart');

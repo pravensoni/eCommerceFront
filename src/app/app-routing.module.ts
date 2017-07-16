@@ -3,6 +3,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { HomepageComponent } from './homepage/homepage.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 import { CartDetailComponent } from './cart/cart-detail.component';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -24,6 +25,10 @@ const routes: Routes = [
     {
         path: 'cart',
         component: CartDetailComponent
+    },
+    {
+        path: 'checkout',
+        component: CheckoutComponent
     },
     {
         path: 'contact-us',

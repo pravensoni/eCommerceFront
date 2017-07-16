@@ -1,3 +1,42 @@
-{{cartProducts[0].id}}
-{{cartProducts[0].variantId}}
-{{cartProducts[0].qty}}
+<div class="container">
+    <div class="row">
+        <h1>Your Cart</h1>
+    </div>
+    <div style="font-size: 18px" class="row cart-row hidden-xs">
+        <div class="col-md-6"></div>
+        <div class="col-md-2">Price</div>
+        <div class="col-md-2">Quantity</div>
+        <div class="col-md-2">Total</div>
+    </div>
+
+    <div *ngFor="let cartProduct of cartProducts" class="row cart-row">
+        <div class="col-md-2"><img width="100%" src="{{cartProduct.product.imageLinks[0]}}"></div>
+        <div class="col-md-4">{{cartProduct.product.title}}
+            <br>{{cartProduct.variantName}}
+            <br><span (click)=removeItem(cartProduct) style="color:red;cursor: pointer">Remove</span></div>
+        <div class="visible-xs">
+            <div class="col-xs-4">Price</div>
+            <div class="col-xs-4">Quantity</div>
+            <div class="col-xs-4">Total</div>
+        </div>
+        <div class="col-md-2 col-xs-4">{{cartProduct.product.price}}</div>
+        <div class="col-md-2 col-xs-4">{{cartProduct.qty}}</div>
+        <div class="col-md-2 col-xs-4">{{cartProduct.qty*cartProduct.product.price}}</div>
+    </div>
+    <div class="row ">
+        <div class="col-md-offset-10 col-md-2">
+            <h4>Subtotal:<b> &#x20b9; {{subTotal}}</b></h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-9 col-md-3"> <br><br>
+            <button class="btn" [routerLink]="['/home']">            
+              <span>Continue Shopping</span>
+            </button>
+            <button class="btn btn-primary" [routerLink]="['/checkout']" style="margin-left: 10px">
+              <span>Checkout</span>
+            </button>
+        </div>
+    </div>
+
+</div>

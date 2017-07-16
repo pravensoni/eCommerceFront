@@ -13,18 +13,23 @@ import { CartService } from '../services/cart.service';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
-    selector: 'cart-detail',
-    templateUrl: './cart-detail.component.html',
-    styleUrls:['./cart-detail.component.css'],
+    selector: 'checkout',
+    templateUrl: './checkout.component.html',
+    styleUrls:['./checkout.component.css'],
     providers: [ProductService,CartService]
 })
 
-export class CartDetailComponent implements OnInit {
+export class CheckoutComponent implements OnInit {
     products: Product[] = new Array<Product>();
     cartProducts: ProductCart[];
     totVarType : string[];
     subTotal : number = 0;
     public alerts: any = [];
+
+    public status: any = {
+    isFirstOpen: true,
+    isFirstDisabled: false
+  };
 
 
     constructor(

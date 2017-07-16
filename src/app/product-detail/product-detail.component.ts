@@ -54,11 +54,10 @@ export class ProductDetailComponent implements OnInit {
         this.location.back();
     }
 
-    addToCart(item : Product,qty:string){
+    addToCart(item : Product,qty:string,varId:number){
         let productCart : ProductCart = new ProductCart;
         productCart.id = item.id;
-        // TODO :set variant Id
-        productCart.variantId = item.id; 
+        productCart.variantId = varId; 
         productCart.qty = Number(qty); 
         this.cartService.addItem(productCart);
         this.alertSuccess();

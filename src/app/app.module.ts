@@ -10,8 +10,12 @@ import { HttpModule }    from '@angular/http';
 import { CookieModule } from 'ngx-cookie';
 import { CarouselModule } from 'ngx-bootstrap';
 import { AlertModule } from 'ngx-bootstrap';
+import { AccordionModule } from 'ngx-bootstrap';
 import { EscapeHtmlPipe } from './pipes/keep-html.pipe';4
 import { CartDetailComponent } from './cart/cart-detail.component';
+import { FormsModule } from '@angular/forms';
+import { CheckoutComponent } from './checkout/checkout.component';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +26,7 @@ import { CartDetailComponent } from './cart/cart-detail.component';
     ContactUsComponent,
     EscapeHtmlPipe,
     CartDetailComponent,
+    CheckoutComponent
 
   ],
   imports: [
@@ -31,6 +36,8 @@ import { CartDetailComponent } from './cart/cart-detail.component';
     CookieModule.forRoot(),
     CarouselModule.forRoot(),
     AlertModule.forRoot(),
+    AccordionModule.forRoot(),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
