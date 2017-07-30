@@ -1,13 +1,13 @@
 <div class="container">
   <div class="col-md-10">
     <accordion [closeOthers]=true>
-      <accordion-group #group1 (click)="getOrderInfo()">
+      <accordion-group #group1 [isOpen]="!status.isFirstOpen">
         <div accordion-heading>
           Order Summary
           <i class="pull-right float-xs-right glyphicon" [ngClass]="{'glyphicon-chevron-down': group1?.isOpen, 'glyphicon-chevron-right': !group1?.isOpen}"></i>
         </div>
         <!--Order Summary Start-->
-        <div class="col-md-12">
+        <div *ngIf="cartProducts" class="col-md-12">
           <div style="font-size: 18px" class="row cart-row hidden-xs">
             <div class="col-md-6"></div>
             <div class="col-md-2">Price</div>
@@ -16,8 +16,8 @@
           </div>
 
           <div *ngFor="let cartProduct of cartProducts" class="row cart-row">
-            <div class="col-md-2"><img width="100%" src="{{cartProduct.product.imageLinks[0]}}"></div>
-            <div class="col-md-4">{{cartProduct.product.title}}
+            <div class="col-md-2"><img width="100%" src="{{cartProduct?.product?.imageLinks[0]}}"></div>
+            <div class="col-md-4">{{cartProduct.product?.title}}
               <br>{{cartProduct.variantName}}
             </div>
             <div class="visible-xs">
@@ -25,9 +25,9 @@
               <div class="col-xs-4">Quantity</div>
               <div class="col-xs-4">Total</div>
             </div>
-            <div class="col-md-2 col-xs-4">{{cartProduct.product.price}}</div>
+            <div class="col-md-2 col-xs-4">{{cartProduct.product?.price}}</div>
             <div class="col-md-2 col-xs-4">{{cartProduct.qty}}</div>
-            <div class="col-md-2 col-xs-4">{{cartProduct.qty*cartProduct.product.price}}</div>
+            <div class="col-md-2 col-xs-4">{{cartProduct.qty*cartProduct.product?.price}}</div>
           </div>
           <div class="row ">
             <div class="col-md-offset-9 col-md-3">
@@ -84,7 +84,8 @@
               <input type="text" class="form-control" id="pincode" required [(ngModel)]="cusInfo.pincode" name="pincode">
             </div>
             <div class="form-group col-md-12">
-             <br><button class="btn btn-primary pull-right" (click)="group3.isOpen = !group3.isOpen">Continue</button> 
+              <br><button class="btn btn-primary pull-right" (click)="group3.isOpen = !group3.isOpen">Continue</button>
+
             </div>
           </form>
 
@@ -97,18 +98,37 @@
           <i class="pull-right float-xs-right glyphicon" [ngClass]="{'glyphicon-chevron-down': group3?.isOpen, 'glyphicon-chevron-right': !group3?.isOpen}"></i>
         </div>
         <!--payment method start-->
+        <form>
+          <div class="form-group">
+            <label><input type="radio"  name="payment" value="ONLINE"  [(ngModel)]="paymentType"> Credit Card, Debit Card or Net Banking</label>
+          </div>
+          <div class="form-group">
 
-        <div class="form-group">
-          
-          <label><input type="radio" value="online" name="payment"> Credit Card, Debit Card or Net Banking</label>
+            <label><input type="radio"  name="payment"  value="COD"  [(ngModel)]="paymentType" > Cash On Delivery</label>
+          </div>
+        </form>
+        <div class="form-group col-md-12">
+          <!--form for payment start-->
+          <form #payForm action="https://test.payu.in/_payment" method="POST">
+
+            <input type="hidden" name="key" value="{{payInfo.key}}">
+            <input type="hidden" name="hash"  value="{{payInfo.hash}}">
+            <input type="hidden" name="txnid" value="{{payInfo.txnid}}">
+            <input type="hidden" name="amount" value="{{payInfo.amount}}" />
+            <input type="hidden" name="firstname" value="{{payInfo.firstname}}" />
+            <input type="hidden" name="email" value="{{payInfo.email}}" />
+            <input type="hidden" name="phone" value="{{payInfo.phone}}" />
+            <input type="hidden" name="productinfo" value="{{payInfo.productinfo}}">
+            <input type="hidden" name="surl" size="64" value="{{payInfo.surl}}">
+            <input type="hidden" name="furl" size="64" value="{{payInfo.furl}}">
+            <input type="hidden" name="service_provider" value="{{payInfo.serviceProvider}}" />
+
+          </form>
+          <!--form for payment end-->
+          <br><button class="btn btn-primary pull-right" (click)="placeOrder(payForm)">Complete Order</button>
+
         </div>
-        <div class="form-group">
-          
-          <label><input type="radio" value="cod" name="payment"> Cash On Delivery</label>
-        </div>
-<div class="form-group col-md-12">
-             <br><button class="btn btn-primary pull-right" (click)="placeOrder()">Complete Order</button> 
-            </div>
+
         <!--payment method end-->
       </accordion-group>
     </accordion>

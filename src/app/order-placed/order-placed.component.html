@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="col-md-offset-2 col-md-8 col-xs-12">
+  <h2>Thank You, Your order has been placed!</h2>
+  <h4>Order Number: <b>{{order.dispOrderId}}</b></h4><br>
+  
+
+<div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Order Summary</b></div>
+      <div class="panel-body">
+        
+        <!--Order Summary Start-->
+        <div class="col-md-12">
+          <div style="font-size: 18px" class="row cart-row hidden-xs">
+            <div class="col-md-6"></div>
+            <div class="col-md-2">Price</div>
+            <div class="col-md-2">Quantity</div>
+            <div class="col-md-2">Total</div>
+          </div>
+
+          <div *ngFor="let product of order.products" class="row cart-row">
+            <div class="col-md-2"><img width="100%" src="{{product.imageLinks[0]}}"></div>
+            <div class="col-md-4">{{product.title}}
+              <br>{{product.variantName}}
+            </div>
+            <div class="visible-xs">
+              <div class="col-xs-4">Price</div>
+              <div class="col-xs-4">Quantity</div>
+              <div class="col-xs-4">Total</div>
+            </div>
+            <div class="col-md-2 col-xs-4">{{product.price}}</div>
+            <div class="col-md-2 col-xs-4">{{product.qty}}</div>
+            <div class="col-md-2 col-xs-4">{{product.qty*product.price}}</div>
+          </div>
+          <div class="row ">
+            <div class="col-md-offset-9 col-md-3">
+              <h4>Subtotal:<b> &#x20b9; {{order.subTotal}}</b></h4>
+            </div>
+          </div>
+
+
+        </div>
+        <!--Order Summary End-->
+
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Customer Information</b></div>
+      <div class="panel-body">
+        <p>Shipping Address</p>
+        <p>{{order.customerInfo.fname}} {{order.customerInfo.lname}}<br>
+        {{order.customerInfo.address}}<br>
+        {{order.customerInfo.city}} {{order.customerInfo.state}} {{order.customerInfo.pincode}}<br>
+       Phone: {{order.customerInfo.phone}}</p>
+       <p>Payment Method:
+         <span  *ngIf="order.paymentType=='COD'">Cash On Delivery</span>
+         <span  *ngIf="order.paymentType=='ONLINE'">Online</span></p>
+      </div>
+    </div>
+</div>
+</div>
+
+</div>

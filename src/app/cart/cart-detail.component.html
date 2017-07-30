@@ -2,6 +2,7 @@
     <div class="row">
         <h1>Your Cart</h1>
     </div>
+    <div *ngIf="cartProducts">
     <div style="font-size: 18px" class="row cart-row hidden-xs">
         <div class="col-md-6"></div>
         <div class="col-md-2">Price</div>
@@ -38,5 +39,8 @@
             </button>
         </div>
     </div>
-
+    </div>
+    <div *ngIf="emptyCart"  class="row">
+<p>Your shopping cart is empty <a routerLink="/home">Continue Shopping</a></p>
+    </div>
 </div>

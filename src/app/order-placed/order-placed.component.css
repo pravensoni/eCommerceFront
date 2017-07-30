@@ -1,0 +1,15 @@
+.cart-row{
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0px 5px 5px;
+}
+
+.checkout{
+    border-radius: 2px;
+    background-color: #e42c00;
+    color: #fff;
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 20px 0px 20px 0px;
+}
+
+

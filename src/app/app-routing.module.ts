@@ -5,6 +5,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { CartDetailComponent } from './cart/cart-detail.component';
+import { OrderPlacedComponent } from "./order-placed/order-placed.component";
 import { RouterModule, Routes } from '@angular/router';
 
 
@@ -29,6 +30,10 @@ const routes: Routes = [
     {
         path: 'checkout',
         component: CheckoutComponent
+    },
+    {
+        path: 'order/:oid',
+        component: OrderPlacedComponent
     },
     {
         path: 'contact-us',

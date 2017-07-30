@@ -3,4 +3,5 @@ export class Variant {
   variantName: string;
   variantType: string;
   imageLink: string[];
+  qty:number;
 }

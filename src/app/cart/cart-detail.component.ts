@@ -15,16 +15,17 @@ import 'rxjs/add/operator/switchMap';
 @Component({
     selector: 'cart-detail',
     templateUrl: './cart-detail.component.html',
-    styleUrls:['./cart-detail.component.css'],
-    providers: [ProductService,CartService]
+    styleUrls: ['./cart-detail.component.css'],
+    providers: [ProductService, CartService]
 })
 
 export class CartDetailComponent implements OnInit {
     products: Product[] = new Array<Product>();
     cartProducts: ProductCart[];
-    totVarType : string[];
-    subTotal : number = 0;
+    totVarType: string[];
+    subTotal: number = 0;
     public alerts: any = [];
+    emptyCart: boolean;
 
 
     constructor(
@@ -36,28 +37,34 @@ export class CartDetailComponent implements OnInit {
 
     getProducts(): void {
 
-      this.cartProducts = this.cartService.getAllItems();
-      for(let cartProduct of this.cartProducts){
-        this.productService.getProduct(cartProduct.id).then(product => {
-            cartProduct.product = product;
-            this.subTotal+= product.price*cartProduct.qty;
-            for(let variant of product.variants){
-                console.log(cartProduct.variantId);
-                if(variant.id==cartProduct.variantId){
-                    cartProduct.variantName = variant.variantName;
-                }
+        this.cartProducts = this.cartService.getAllItems();
+        if (this.cartProducts) {
+            for (let cartProduct of this.cartProducts) {
+                this.productService.getProduct(cartProduct.id).then(product => {
+                    cartProduct.product = product;
+                    this.subTotal += product.price * cartProduct.qty;
+                    for (let variant of product.variants) {
+                        console.log(cartProduct.variantId);
+                        if (variant.id == cartProduct.variantId) {
+                            cartProduct.variantName = variant.variantName;
+                        }
+                    }
+                });
+
             }
-        });
-        
-      }
+            this.emptyCart = false;
+        }else{
+            this.emptyCart = true;
+        }
     }
-removeItem(item: ProductCart) {
+    removeItem(item: ProductCart) {
         this.cartService.removeItem(item);
         window.location.reload();
     }
 
     ngOnInit(): void {
         this.getProducts();
+
     }
 
 

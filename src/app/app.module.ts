@@ -15,6 +15,8 @@ import { EscapeHtmlPipe } from './pipes/keep-html.pipe';4
 import { CartDetailComponent } from './cart/cart-detail.component';
 import { FormsModule } from '@angular/forms';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { OrderPlacedComponent } from './order-placed/order-placed.component';
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     ContactUsComponent,
     EscapeHtmlPipe,
     CartDetailComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    OrderPlacedComponent
 
   ],
   imports: [
@@ -39,7 +42,9 @@ import { CheckoutComponent } from './checkout/checkout.component';
     AccordionModule.forRoot(),
     FormsModule,
   ],
-  providers: [],
+  providers: [
+     {provide: LocationStrategy, useClass: HashLocationStrategy},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

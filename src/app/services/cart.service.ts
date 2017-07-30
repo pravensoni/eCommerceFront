@@ -49,5 +49,8 @@ export class CartService {
        return products;
         //this._cookieService.removeAll();
     }
+    clearCart() : void {
+        this._cookieService.remove('cart');
+    }
 
 }
