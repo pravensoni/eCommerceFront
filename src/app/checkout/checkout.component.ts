@@ -35,6 +35,7 @@ export class CheckoutComponent implements OnInit, AfterViewChecked {
     cusInfo: CustomerInfo = new CustomerInfo;
     payInfo: PayInfo = new PayInfo();
     payForm;
+    placeOrderBtnClicked:boolean= false;
     states: string[] = ['Andaman and Nicobar', 'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chandigarh', 'Chattisgarh', 'Dadra and Nagar Haveli', 'Daman and Diu', 'Delhi', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jammu and Kashmir', 'Jharkhand', 'Karnataka', 'Kerala', 'Lakshadweep', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Orissa', 'Puducherry', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal'];
 
     public status: any = {
@@ -80,6 +81,7 @@ export class CheckoutComponent implements OnInit, AfterViewChecked {
 
 
     placeOrder(payForm): boolean {
+        this.placeOrderBtnClicked = true;
         let orderPlaced: boolean = false;
         let products: Product[] = new Array<Product>();
         let order: Order = new Order();
@@ -88,23 +90,27 @@ export class CheckoutComponent implements OnInit, AfterViewChecked {
 
         for (let productCart of this.cartProducts) {
             let product: Product = new Product();
-            let variant: Variant = new Variant();
+            
             product.id = productCart.product.id;
             product.title = productCart.product.title;
             product.price = productCart.product.price;
             product.imageLinks = new Array();
             product.imageLinks.push(productCart.product.imageLinks[0]);
+            if(productCart.variantId != undefined){
+            let variant: Variant = new Variant();
             variant.id = productCart.variantId;
             variant.variantName = productCart.variantName;
             variant.qty = productCart.qty;
             product.variants = new Array<Variant>();
             product.variants.push(variant);
+            }
+            
             product.qty = productCart.qty;
             products.push(product);
         }
 
         this.productService.placeOrder(this.cusInfo, products, this.paymentType, this.subTotal).then(order => {
-            //this.cartService.clearCart();
+            this.cartService.clearCart();
             this.payInfo = order.payInfo; 
             this.payForm = payForm;
             if (this.paymentType == "COD") {

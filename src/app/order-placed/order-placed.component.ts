@@ -37,7 +37,6 @@ export class OrderPlacedComponent implements OnInit {
             .switchMap((params: ParamMap) => this.productService.getOrder((params.get('oid')))
                 ).subscribe(order=> {
                     this.order = order;
-                    console.log(JSON.stringify(this.order));
                 })
 
                 

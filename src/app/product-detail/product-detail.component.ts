@@ -21,9 +21,11 @@ import 'rxjs/add/operator/switchMap';
 
 export class ProductDetailComponent implements OnInit {
     product: Product;
+    imageLink:string;
     totVarType : string[];
     public alerts: any = [];
-
+    selectedVar;
+    qty:number = 1;
 
     constructor(
         private productService: ProductService,
@@ -38,9 +40,16 @@ export class ProductDetailComponent implements OnInit {
             .subscribe(product => {
                 this.product = product;
                 let totVarType = new Collections.Set<string>();
+                let varDefaultSet:boolean = false;
+                this.imageLink = product.imageLinks[0];
                 for(let variant of product.variants){
                     totVarType.add(variant.variantType);
+                    if(!varDefaultSet){
+                    this.selectedVar = variant.id;
+                    varDefaultSet=true;
+                    }
                 }
+
                 this.totVarType = totVarType.toArray();
             });
     }
@@ -54,11 +63,12 @@ export class ProductDetailComponent implements OnInit {
         this.location.back();
     }
 
-    addToCart(item : Product,qty:string,varId:number){
+    addToCart(item : Product,varId:number){
         let productCart : ProductCart = new ProductCart;
         productCart.id = item.id;
         productCart.variantId = varId; 
-        productCart.qty = Number(qty); 
+        productCart.qty = Number(this.qty);
+        console.log(this.qty); 
         this.cartService.addItem(productCart);
         this.alertSuccess();
     }
@@ -72,6 +82,10 @@ export class ProductDetailComponent implements OnInit {
       msg: `The Product Was Succesfully Added To Cart`,
       timeout: 5000
     });
+  }
+
+  changeImage(imageLink:string){
+      this.imageLink = imageLink;
   }
 
 }

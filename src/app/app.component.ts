@@ -13,6 +13,10 @@ export class AppComponent{
         let bool = this.isIn;
         this.isIn = bool === false ? true : false; 
     }
+    closeState() { // click handler
+        let bool = this.isIn;
+        this.isIn = false; 
+    }
 }
 
 

@@ -1,0 +1,33 @@
+<div *ngFor="let alert of alerts" style="position: fixed;z-index: 10" class="col-xs-12 col-md-12 text-center">
+    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+  </div>
+<div class="container" style="font-size: 16px">
+  <div class="row col-md-offset-2 col-md-8  col-xs-12">
+    <h1>Contact Us</h1><br>
+    <p>We'd love to help you with any questions you might have.</p>
+    <p>You can contact us by writing to us at&nbsp;<strong>support@fidgetcube.in</strong>&nbsp;or by filling the following form
+      and we'd get back to you in no time.</p>
+    <p>If you'd like to&nbsp;<strong>chat with us</strong>&nbsp;over the phone then just mention in your mail or your message
+      below and we'd call you back as soon as possible</p><br>
+    <form #cusInfoForm="ngForm">
+
+      <div class="form-group">
+        <input type="text" class="form-control" id="name" required [(ngModel)]="name" name="name" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="email" required [(ngModel)]="email" name="email" placeholder="E-Mail">
+      </div>
+      <div class="form-group ">
+        <input type="text" class="form-control" id="phone" required [(ngModel)]="phone" name="phone" placeholder="Phone">
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" id="message" required [(ngModel)]="message" name="message" rows="8" placeholder="Message(Please mention if you would like a call back)"></textarea>
+      </div>
+      <div class="form-group">
+        <br><button class="btn btn-primary pull-right" (click)="sendEmail()">Send</button>
+
+      </div>
+    </form>
+  </div>
+</div>
+<footer-main></footer-main>

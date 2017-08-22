@@ -1,0 +1,30 @@
+<div *ngFor="let alert of alerts" style="position: fixed;z-index: 10" class="col-xs-12 col-md-12 text-center">
+  <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+</div>
+<div class="container" style="font-size: 16px">
+  <div class="row col-md-offset-3 col-md-6  col-xs-12">
+    <h1>Track Order</h1>
+    <div class="panel-group" style="margin-top:8%">
+      <div class="panel panel-default">
+        <div class="panel-heading"><b>Track Your Order</b></div>
+        <div class="panel-body">
+          <form #cusInfoForm="ngForm">
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="dispOrderId" required [(ngModel)]="dispOrderId" name="dispOrderId" placeholder="Order ID">
+            </div>
+            <div class="form-group text-center">
+              <button class="btn btn-primary" (click)="checkStatus()">Track</button>
+            </div>
+          </form>
+          <div *ngIf="orderStatus">
+            <hr>
+      {{orderStatus}}
+    </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+<footer-main></footer-main>

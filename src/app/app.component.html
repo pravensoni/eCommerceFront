@@ -3,6 +3,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
+            <div (click)="closeState()" ><img  routerLink="/cart" class="pull-right" style="max-width:30px;cursor: pointer;margin: 10px; " src="assets/images/cart_icon.png"></div>
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle pull-left" style="margin-left: 2%"  data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" (click)="toggleState()">
                     <span class="sr-only">Toggle navigation</span>
@@ -13,7 +14,7 @@
                 
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" [ngClass]="{ 'in': isIn }">
+            <div (click)="closeState()" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" [ngClass]="{ 'in': isIn }">
                 <ul class="nav navbar-nav">
                     <li>
                         <a routerLink="/home">Home</a>
@@ -22,7 +23,7 @@
                         <a routerLink="/about-us">About Us</a>
                     </li>
                     <li>
-                        <a routerLink="/contact-us">Track Order</a>
+                        <a routerLink="/track-order">Track Order</a>
                     </li>
                     <li>
                         <a routerLink="/contact-us">Contact Us</a>
@@ -30,7 +31,7 @@
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
-            <div style="margin-top: -35px;"><img routerLink="/cart" class="pull-right" style="max-width:30px;cursor: pointer " src="assets/images/cart_icon.png"></div>
+            
         </div>
         <!-- /.container -->
     </nav>

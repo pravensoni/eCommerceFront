@@ -4,7 +4,12 @@ import { AppComponent } from './app.component';
 import {ProductDetailComponent} from './product-detail/product-detail.component';
 import {HomepageComponent} from './homepage/homepage.component';
 import {ContactUsComponent} from './contact-us/contact-us.component';
-import {AboutUsComponent} from './about-us/about-us.component';
+import {AboutUsComponent} from './static-pages/about-us.component';
+import { RefundPolicyComponent } from './static-pages/refund-policy.component';
+import { PrivacyPolicyComponent } from './static-pages/privacy-policy.component';
+import { TermsOfServiceComponent } from './static-pages/terms-of-service.component';
+import {FooterComponent} from './footer/footer.component';
+import {TrackOrderComponent} from './track-order/track-order.component';
 import { AppRoutingModule }   from './app-routing.module';
 import { HttpModule }    from '@angular/http';
 import { CookieModule } from 'ngx-cookie';
@@ -29,7 +34,13 @@ import {HashLocationStrategy, LocationStrategy} from "@angular/common";
     EscapeHtmlPipe,
     CartDetailComponent,
     CheckoutComponent,
-    OrderPlacedComponent
+    OrderPlacedComponent,
+    FooterComponent,
+    RefundPolicyComponent,
+    PrivacyPolicyComponent,
+    TermsOfServiceComponent,
+    TrackOrderComponent
+
 
   ],
   imports: [
